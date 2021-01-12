@@ -1,0 +1,3 @@
+/Users/eddiexu/CLionProjects/HW1/q1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/eddiexu/CLionProjects/HW1/q1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/eddiexu/CLionProjects/HW1/q1/cmake-build-debug/CMakeFiles/q1.dir
