@@ -8,13 +8,14 @@ USE FOR EASIER TESTING (Copy in and press enter):
 
 4
 5
+0
 1 2 0 0 5 2 2 9 8 4 3 2 9 0 4 6 6 6 6 0 f
 
 */
 
 int main()
 {
-    int width, height, number;
+    int width, height, number, target;
     vector<int> numbers;
 
     cout << "Please enter your desired height (number of rows): ";
@@ -22,6 +23,9 @@ int main()
 
     cout << "Please enter your desired width (number of columns): ";
     cin >> width;
+
+    cout << "Please enter your target: ";
+    cin >> target;
 
     cout << "Please enter your stream of numbers (Going right to left, top to bottom). Press 'f' when finished: " << endl; 
     while (cin) {
@@ -37,7 +41,7 @@ int main()
 
 
     cout << endl << endl;
-    moveD(&numbers[0], width, height, 0);
+    moveD(&numbers[0], width, height, target);
 
     cout << "OUTPUT: " << endl;
 

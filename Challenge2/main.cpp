@@ -8,13 +8,14 @@ USE FOR EASIER TESTING (Copy in and press enter):
 
 4
 5
-1 2 0 0 5 2 2 9 8 4 3 2 9 0 4 6 6 6 6 0 f
+0
+1 2 0 4 5 2 2 9 8 4 3 2 9 0 4 6 6 6 6 6 f
 
 */
 
 int main()
 {
-    int width, height, number;
+    int width, height, number, target;
     vector<int> numbers;
 
     cout << "Please enter your desired height (number of rows): ";
@@ -22,6 +23,9 @@ int main()
 
     cout << "Please enter your desired width (number of columns): ";
     cin >> width;
+
+    cout << "Please enter your target: ";
+    cin >> target;
 
     cout << "Please enter your stream of numbers (Going right to left, top to bottom). Press 'f' when finished: " << endl; 
     while (cin) {
@@ -37,7 +41,7 @@ int main()
 
 
     cout << endl << endl;
-    moveD(&numbers[0], width, height, 0);
+    moveD(&numbers[0], width, height, target);
 
     cout << "OUTPUT: " << endl;
 
@@ -53,22 +57,17 @@ int main()
 }
 
 void moveD(int * block, int width, int height, int target) {
-    vector<int> replacedIndexes;
-    
     for (int i = 0; i < width * height; i++) {
-        if (block[i] == target && (find(replacedIndexes.begin(), replacedIndexes.end(), i) == replacedIndexes.end())) {
-            // Get that column
-
+        if (block[i] == target) {
             int column = i % width;
-            int startIndex = width * height - (width - (i % width));
-            int replace = block[startIndex];
-            while (startIndex >= 0 && replace == target && (find(replacedIndexes.begin(), replacedIndexes.end(), startIndex) != replacedIndexes.end())) {
-                startIndex -= width;
-                replace = block[startIndex];
-            }
-            block[startIndex] = target;
+            int row = i / width;
+            int roomToGoLeft = column;
+            int roomToGoDown = height - 1 - row;
+            int maxDiag = min(roomToGoLeft, roomToGoDown);
+            int replace = block[width*maxDiag - maxDiag + i];
+            block[width*maxDiag - maxDiag + i] = target;
             block[i] = replace;
-            replacedIndexes.push_back(startIndex);
+            break;
         }
     }
 }
