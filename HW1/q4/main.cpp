@@ -4,6 +4,16 @@ using namespace std;
 
 int rightIndex = 0;
 
+/* Method to reverse a string */
+string reverseString(string input) {
+    string output;
+    for (int i = input.length() - 1; i >= 0; i--) {
+        output += input[i];
+    }
+
+    return output;
+}
+
 bool isOperator(char c) {
     return c == '*' || c == '/' || c == '+' || c == '-';
 }
@@ -29,15 +39,14 @@ string leftTrav(int index, string s) {
     string output = "";
     // Index should start one left of the operator
     for (int i = index; i >= 0; i--) {
-        if (!isnumber(s[i])) {
-            reverse(output.begin(), output.end());
-            return output;
+        if (!isdigit(s[i])) {
+            // Immediately return the string reversed
+            return reverseString(output);;
         }
         output += s[i];
     }
 
-    reverse(output.begin(), output.end());
-    return output;
+    return reverseString(output);;
 }
 
 /* Method to form the number to the right of an operator, in a given string */
@@ -45,7 +54,7 @@ string rightTrav(int index, string s) {
     string output = "";
     // Index should start one right of operator
     for (int i = index; i < s.length(); i++) {
-        if (!isnumber(s[i])) {
+        if (!isdigit(s[i])) {
             rightIndex = i;
             return output;
         }
@@ -63,7 +72,7 @@ string cleanLine(string s) {
     bool seenOperator = false;
     for (int i = 0; i < s.length(); i++) {
 
-        if (isnumber(s[i]) && i >= rightIndex) {
+        if (isdigit(s[i]) && i >= rightIndex) {
             num += s[i];
         }
 
@@ -83,7 +92,7 @@ string cleanLine(string s) {
             if (left.length() > 0 || right.length() > 0) seenOperator = true;
         }
 
-        else if (!isnumber(s[i]) && !isOperator(s[i])) {
+        else if (!isdigit(s[i]) && !isOperator(s[i])) {
             if (num.length() != 0 && !seenOperator) {
                 output += (num + s[i]);
                 num = "";

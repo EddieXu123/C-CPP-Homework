@@ -6,11 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/Users/eddiexu/CLionProjects/Challenge1/main.cpp
+/Users/eddiexu/CLionProjects/C:C++ JanTerm/Challenge1/main.cpp
 iostream
 -
 vector
 -
 string
+-
+algorithm
 -
 

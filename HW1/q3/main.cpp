@@ -8,7 +8,7 @@ bool isOperator(char c) {
 bool isValid(string s) {
     /* Check that input is valid (only numbers and operators) */
     for (int i = 0; i < s.length(); i++) {
-        if (!(isOperator(s[i]) || isnumber(s[i]))) return false;
+        if (!(isOperator(s[i]) || isdigit(s[i]))) return false;
     }
 
     /* Check for two operators next to each other */

@@ -10,7 +10,6 @@ bool compareStrings(string A, string B, int n) {
 }
 
 int main() {
-
     string A;
     cout << "Please Enter your first String: ";
     getline(cin, A);
@@ -24,14 +23,14 @@ int main() {
     getline(cin, n);
 
     for (int i = 0; i < n.length(); i++) {
-        if (!isnumber(n[i])) return 0;
+        if (!isdigit(n[i])) return 0;
     }
 
     int num = stoi(n);
 
     if (num < 1) return 0;
-
-    cout << (compareStrings(A, B, num) ? "TRUE" : "FALSE");
+    if (num > min(A.length(), B.length())) cout << (A.compare(B) == 0 ? "TRUE" : "FALSE");
+    else cout << (compareStrings(A, B, num) ? "TRUE" : "FALSE");
 
     return 0;
 }
