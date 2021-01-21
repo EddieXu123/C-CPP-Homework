@@ -6,6 +6,10 @@ int main()
 {
     string str = "The answer to Question 1 is...!";
     int amt = 5;
+    if (amt < 0) {
+        cout << "Shift amount cannot be negative";
+        return 0;
+    }
 
     codeCipher(amt % 26, &str[0], str.length());
     cout << "Output:" << endl << str;

@@ -5,8 +5,8 @@ using namespace std;
 
 int main()
 {
-    int pointer[4][5] = {{1,2,0,0,5},{2,2,9,8,4},{3,2,9,0,4},{6,6,6,6,0}};
-    //int pointer[20] = {1,2,0,0,5,2,2,9,8,4,3,2,9,0,4,6,6,6,6,0};
+    int pointer[4][5] = {1,2,0,0,5,2,2,9,8,4,3,2,9,0,4,6,6,6,6,0}; // If input is 2D
+    //int pointer[20] = {1,2,0,0,5,2,2,9,8,4,3,2,9,0,4,6,6,6,6,0}; // Uncomment if input is 1D
 
     moveD(*pointer, 5, 4, 0); // If input is 1D array, then please replace '*pointer' with 'pointer'
 
