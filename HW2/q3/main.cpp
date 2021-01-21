@@ -5,45 +5,12 @@
 
 using namespace std;
 
-/*
-USE FOR EASIER TESTING (For the String array):
-
-This gnirts i
-s on
-t a test !drow
-f
-
-*/
-
 int main()
 {
-    vector<string> words;
-    int switchIndex;
-    string c;
+    string sentence[] = {"This gnirts i","s on","t a test !drow"};
+    int switchIndex = 2;
 
-    cout << "Please enter your strings (Press 'f' when finished'): " << endl;
-    while (getline(cin, c)) {
-        if (c[0] == '\"' || c[c.length() - 1] == '\"') {
-            cout << "Please do not include quotation marks in your String (Keep going)" << endl;
-            continue;
-        }
-        if (c.compare("f") == 0) break;
-        words.push_back(c);
-    }
-
-    string sentence[words.size()];
-    for (int i = 0; i < words.size(); i++) {
-        sentence[i] = words[i];
-    }
-
-    cout << "Please enter the index you want flipped in each string: ";
-    cin >> switchIndex;
-    if (!(0 <= switchIndex && switchIndex <= INT_MAX)) {
-        cout << "Input must be nonnegative";
-        return 0;
-    }
-
-    cout << endl << "Output: " << flipEveryXthWord(sentence, words.size(), switchIndex);
+    cout << endl << "Output: " << flipEveryXthWord(sentence, *(&sentence + 1) - sentence, switchIndex);
     return 0;
 }
 

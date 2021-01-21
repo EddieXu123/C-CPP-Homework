@@ -3,54 +3,20 @@
 #include "hw2q4.h"
 using namespace std;
 
-/*
-USE FOR EASIER TESTING (Copy in and press enter):
-
-4
-5
-0
-1 2 0 0 5 2 2 9 8 4 3 2 9 0 4 6 6 6 6 0 f
-
-*/
-
 int main()
 {
-    int width, height, number, target;
-    vector<int> numbers;
+    int pointer[4][5] = {{1,2,0,0,5},{2,2,9,8,4},{3,2,9,0,4},{6,6,6,6,0}};
+    //int pointer[20] = {1,2,0,0,5,2,2,9,8,4,3,2,9,0,4,6,6,6,6,0};
 
-    cout << "Please enter your desired height (number of rows): ";
-    cin >> height;
-
-    cout << "Please enter your desired width (number of columns): ";
-    cin >> width;
-
-    cout << "Please enter your target: ";
-    cin >> target;
-
-    cout << "Please enter your stream of numbers (Going right to left, top to bottom). Press 'f' when finished: " << endl; 
-    while (cin) {
-        cin >> number;
-        if (number == 'f' - 0) break;
-        numbers.push_back(number);
-    }
-
-    if (numbers.size() - 1 != height * width) {
-        cout << "The height and width entered do not result in a table with all your numbers" << endl;
-        return 0;
-    }
-
-
-    cout << endl << endl;
-    moveD(&numbers[0], width, height, target);
+    moveD(*pointer, 5, 4, 0); // If input is 1D array, then please replace '*pointer' with 'pointer'
 
     cout << "OUTPUT: " << endl;
 
-
     int index = 0;
-    for (int i = 0; i < height; i++) {
+    for (int i = 0; i < 4; i++) {
         cout << endl;
-        for (int j = 0; j < width; j++) {
-            cout << numbers[index++] << " ";
+        for (int j = 0; j < 5; j++) {
+            cout << pointer[i][j] << " "; // If input is 2D array, then please replace 'pointer[i][j]' with 'pointer[index++]'
         }
     }
     return 0;
@@ -61,15 +27,15 @@ void moveD(int * block, int width, int height, int target) {
     
     for (int i = 0; i < width * height; i++) {
         if (block[i] == target && (find(replacedIndexes.begin(), replacedIndexes.end(), i) == replacedIndexes.end())) {
-            // Get that column
+            int startIndex = width * height - (width - (i % width)); // The index I start by is here (The last row, in the column I found my target)
+            int replace = block[startIndex]; // The value I want to swap
 
-            int column = i % width;
-            int startIndex = width * height - (width - (i % width));
-            int replace = block[startIndex];
+            /* While I still have room to go upwards, and while I have found my index */
             while (startIndex >= 0 && replace == target && (find(replacedIndexes.begin(), replacedIndexes.end(), startIndex) != replacedIndexes.end())) {
-                startIndex -= width;
+                startIndex -= width; // Keep traversing upwards
                 replace = block[startIndex];
             }
+            /* Swap */
             block[startIndex] = target;
             block[i] = replace;
             replacedIndexes.push_back(startIndex);
