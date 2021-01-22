@@ -1,10 +1,12 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
-#include <vector>
-#include <fstream>
 
-int main() {
-    
+void a(int input);
 
+int main(){
+    void * p = &15;
     return 0;
+}
+
+void a(int input){
 }

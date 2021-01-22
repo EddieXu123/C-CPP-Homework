@@ -21,12 +21,14 @@ std::string flipEveryXthWord(std::string sentence[], int size, int x) {
         stringstream ssin(line);
         int words = 1;
         // While I have words
+        int counter = 1;
         while (ssin.good()) {
             string word;
             ssin >> word;
-            if (words == x) output += reverse(word) + " ";
+            if (counter % x == 0) output += reverse(word) + " ";
             else output += word + " ";
             words++;
+            counter++;
         }
         // Get rid of extra space at end of each string arr
         output = output.substr(0, output.size() - 1);
