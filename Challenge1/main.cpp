@@ -21,7 +21,7 @@ string rearrange(vector<int> nums, string input) {
     string output;
 
     for (int i = 0; i < input.length(); i++) {
-        if (!isnumber(input[i])) output += input[i];
+        if (!isdigit(input[i])) output += input[i];
         else output += to_string(nums[index++]);
     }
 

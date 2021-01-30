@@ -134,8 +134,8 @@ string solve(string input) {
 int main() {
     string input;
     cout << "Please enter in your equation: ";
-    cin >> input;
-
+    getline(cin, input);
+    
     /* IF INPUT IS BAD */
     if (input[0] == '\"' || input[0] == '\'') {
       cout << "Please don't include any quotation marks in your input";
