@@ -1,14 +1,32 @@
-#include <iostream>
-#include <string>
+#include "person.h"
 using namespace std;
 
-class Person {
+Person::Person(int ID, string name) {
+    setID(ID);
+    setName(name);
+}
 
-    Person(int ID, string name) {
+Person::Person() {
+    setID(-1);
+    setName("");
+}
 
-    }
+int Person::getID() const {
+    return ID;
+}
 
-    Person() {
-        
-    }
-};
+void Person::setID(int id) {
+    this->ID = id;
+}
+
+string Person::getName() const {
+    return name;
+}
+
+void Person::setName(std::string name) {
+    this->name = name;
+}
+
+std::string Person::print() const {
+    return "Name: " + getName() + ". ID: " + to_string(getID());
+}
